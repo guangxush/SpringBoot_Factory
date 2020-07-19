@@ -46,7 +46,7 @@ public class CoreEngineImpl implements CoreEngine {
                         result.setSuccess(true);
                     }
                     result.setMessage(result.getMessage() + "," + workResult.getMessage());
-                    ruleMap.put(work.getWorkCode().getWorkCode(), workResult.toString());
+                    ruleMap.put(work.getWorkCode().getCode(), workResult.toString());
                 }
             }
             return result;
@@ -57,7 +57,7 @@ public class CoreEngineImpl implements CoreEngine {
             if (CollectionUtils.isEmpty(workList)) {
                 log.info("任务未执行");
             } else {
-                String loadWorks = workList.stream().map(w -> w.getWorkCode().getWorkCode()).collect(Collectors.joining(","));
+                String loadWorks = workList.stream().map(w -> w.getWorkCode().getCode()).collect(Collectors.joining(","));
                 log.info("以上任务已经执行" + loadWorks);
             }
         }

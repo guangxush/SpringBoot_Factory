@@ -35,7 +35,7 @@ public abstract class AbstractWork implements Work, InitializingBean, Applicatio
             log.error("任务执行异常", e);
         } finally {
             ResultContextHolder.clear();
-            log.error(request.toString(), result, getWorkCode().getWorkCode());
+            log.error(request.toString(), result, getWorkCode().getCode());
         }
         return result;
     }

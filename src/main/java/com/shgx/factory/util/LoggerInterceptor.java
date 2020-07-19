@@ -21,7 +21,7 @@ public class LoggerInterceptor implements MethodInterceptor {
         Work work = (Work) methodInvocation.getThis();
 
         Result result = (Result) methodInvocation.proceed();
-        printLog(request, result, work.getWorkCode().getWorkCode());
+        printLog(request, result, work.getWorkCode().getCode());
         return result;
     }
 

@@ -37,7 +37,7 @@ public enum WorkEnum {
         this.workDescription = workDescription;
     }
 
-    public String getWorkCode() {
+    public String getCode() {
         return workCode;
     }
 
