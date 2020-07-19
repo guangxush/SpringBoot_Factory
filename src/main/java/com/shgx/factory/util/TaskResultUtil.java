@@ -1,6 +1,7 @@
 package com.shgx.factory.util;
 
 import com.shgx.factory.model.Result;
+import org.springframework.stereotype.Component;
 
 /**
  * @author: guangxush

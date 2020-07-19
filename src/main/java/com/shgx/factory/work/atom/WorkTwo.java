@@ -1,6 +1,7 @@
 package com.shgx.factory.work.atom;
 
 import com.shgx.factory.model.Request;
+import com.shgx.factory.model.Result;
 import com.shgx.factory.model.WorkEnum;
 import com.shgx.factory.work.AbstractWork;
 import org.springframework.stereotype.Component;
@@ -12,11 +13,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class WorkTwo extends AbstractWork {
     @Override
-    protected boolean validate(Request request) {
+    protected Result validate(Request request) {
+        Result result = new Result();
         if(request.getId() > 100L){
-            return false;
+            result.setMessage(">100L");
+            result.setSuccess(false);
         }
-        return true;
+        return result;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.shgx.factory.model;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 /**
  * @author: guangxush
@@ -10,8 +11,17 @@ import lombok.extern.slf4j.Slf4j;
 public class ResultContextHolder {
     private static ThreadLocal<ResultContext> threadLocal = new ThreadLocal<>();
 
-    public static ResultContext get() {
-        return threadLocal.get();
+    public static ResultContext getResultContext() {
+        ResultContext resultContext = threadLocal.get();
+        if(resultContext == null){
+            resultContext = new ResultContext();
+            set(resultContext);
+        }
+        return resultContext;
+    }
+
+    public static void set(ResultContext resultContext){
+        threadLocal.set(resultContext);
     }
 
     public static ThreadLocal<ResultContext> getThreadLocal() {

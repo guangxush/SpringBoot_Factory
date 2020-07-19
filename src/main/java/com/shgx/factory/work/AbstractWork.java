@@ -8,7 +8,6 @@ import com.shgx.factory.model.ResultContextHolder;
 import com.shgx.factory.util.TaskResultUtil;
 import com.sun.javafx.binding.StringFormatter;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.logging.log4j.message.StringFormattedMessage;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
@@ -26,9 +25,10 @@ public abstract class AbstractWork implements Work, InitializingBean, Applicatio
     @Override
     public Result doTask(Request request) {
         Result result = TaskResultUtil.buildSuccessResult();
-        ResultContext resultContext = ResultContextHolder.get();
+        ResultContext resultContext = ResultContextHolder.getResultContext();
         try {
-            if (!validate(request)) {
+            result = validate(request);
+            if (!result.isSuccess()) {
                 result = TaskResultUtil.buildFailedResult(resultContext.getErrorMsg());
             }
         } catch (Exception e) {
@@ -45,7 +45,7 @@ public abstract class AbstractWork implements Work, InitializingBean, Applicatio
      * @param request
      * @return
      */
-    protected abstract boolean validate(Request request);
+    protected abstract Result validate(Request request);
 
     @Override
     public void afterPropertiesSet() throws Exception {
