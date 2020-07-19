@@ -4,8 +4,6 @@ import com.shgx.factory.model.Request;
 import com.shgx.factory.model.Result;
 import com.shgx.factory.model.WorkEnum;
 
-import java.util.concurrent.locks.Condition;
-
 /**
  * @author: guangxush
  * @create: 2020/07/18
